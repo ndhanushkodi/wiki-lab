@@ -24,18 +24,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //ROUTES!!!!!!!!!!!
 app.get("/", index.home);
-app.get("/add", index.add);
-app.get("/ingredients", index.ingredients);
-app.post("/ingredients", index.ingredientsOut);
-app.post("/newName", index.ingredientNewName);
-app.post("/newPrice", index.ingredientNewPrice);
-app.post("/addNew", index.newIngredient);
-app.get("/order", index.order);
-app.post("/check", index.buildCost);
-app.post("/newOrder", index.makeOrder);
-app.post("/delOrd", index.resolveOrder);
-
-app.get("/kitchen", index.kitchen);
 
 
 app.listen(process.env.PORT || PORT);
