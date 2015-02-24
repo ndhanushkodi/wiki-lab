@@ -7,11 +7,11 @@ var exphbs  = require("express-handlebars");
 var mongoose = require("mongoose");
 
 var index = require("./routes/index");
+var edit = require("./routes/edit");
+var add = require("./routes/add");
 
 
 var app = express();
-mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
-var PORT = 3000;
 
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
@@ -25,5 +25,9 @@ app.use(express.static(path.join(__dirname, "public")));
 //ROUTES!!!!!!!!!!!
 app.get("/", index.home);
 
+app.post("/editTopic", edit.editTopic);
+
+mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
+var PORT = 3000;
 
 app.listen(process.env.PORT || PORT);
