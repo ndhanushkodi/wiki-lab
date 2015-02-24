@@ -9,6 +9,7 @@ var mongoose = require("mongoose");
 var index = require("./routes/index");
 var edit = require("./routes/edit");
 var add = require("./routes/add");
+var pages = require("./routes/pages");
 
 
 var app = express();
@@ -24,6 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //ROUTES!!!!!!!!!!!
 app.get("/", index.home);
+
+app.get("/pages", pages.getPages);
 
 app.post("/editTopic", edit.editTopic);
 
