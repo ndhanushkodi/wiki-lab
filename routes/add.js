@@ -1,9 +1,16 @@
-var path = require('path');
+//var path = require('path');
+
+var mongoose = require('mongoose');
+var models = require('../models/topicModel');
 
 var routes = {};
 
-routes.addPage = function(req,res){
-  //
+var Topic = models.Topic;
+
+routes.addTopic = function(req,res){
+  //var name = req.body.name;
+  var name = 'Pirates';
+  var 
 }
 // var getCatImage = function(catParams, absolute) {
 //   var imageLocation;

@@ -30,6 +30,8 @@ app.get("/pages", pages.getPages);
 
 app.post("/editTopic", edit.editTopic);
 
+app.post("/addTopic", add.addTopic);
+
 mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
 var PORT = 3000;
 
