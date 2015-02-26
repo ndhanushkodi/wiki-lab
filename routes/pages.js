@@ -21,4 +21,8 @@ routes.getPages = function(req, res) {
 
 };
 
+routes.dispTopic = function(req,res){
+	//
+}
+
 module.exports = routes;

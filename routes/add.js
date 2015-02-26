@@ -8,35 +8,30 @@ var routes = {};
 var Topic = models.Topic;
 
 routes.addTopic = function(req,res){
-  //var name = req.body.name;
-  var name = 'Pirates';
-  var 
+	//var name = req.body.name;
+	var name = 'Pirates';
+	var img = 'url/ugly.png';
+	var description = 'Dress up and stuff';
+	var dateAdded = new Date();
+	dateAdded = dateAdded.getDate();
+	var rules = 'do this do that'
+
+	var newTopic = new Topic({name:name, 
+		img:img, 
+		description:description,
+		dateAdded:dateAdded,
+		rules:rules});
+
+	newTopic.save(function(err){
+		if(err){
+			console.error('Cant add topic');
+			res.status(500).send("Couldn't add topic");
+		}
+		console.log(newTopic);
+		res.json(newTopic);
+		//res.send(newTopic);
+	});
 }
-// var getCatImage = function(catParams, absolute) {
-//   var imageLocation;
-//   var happyCat = "images/cat.jpg";
-//   var grumpyCat = "images/grumpy.jpeg";
-//   switch (catParams.mood) {
-//     case "happy":
-//       imageLocation = absolute ? path.join(__dirname,"../public/", happyCat) : happyCat;
-//     break;
-//     case "grumpy":
-//       imageLocation = absolute ? path.join(__dirname, "../public/", grumpyCat) : grumpyCat;
-//     break;
-//   }
-//   return imageLocation;
-// }
 
-// routes.getCatGET = function(req, res) {
-//   if (req.xhr) {
-//     res.send(getCatImage(req.query));
-//   } else {
-//     res.sendFile(getCatImage(req.query, true));
-//   }
-// };
-
-// routes.getCatPOST = function(req, res) {
-//   res.sendFile(getCatImage(req.body, true));
-// };
 
 module.exports = routes;

@@ -28,6 +28,8 @@ app.get("/", index.home);
 
 app.get("/pages", pages.getPages);
 
+app.get("/pages/:topic", pages.dispTopic);
+
 app.post("/editTopic", edit.editTopic);
 
 app.post("/addTopic", add.addTopic);
