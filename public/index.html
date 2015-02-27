@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html ng-app='wikiParty'>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+    <script type="text/javascript" src="./javascripts/main.js"></script>
+</head>
+	
+	<body ng-controller='mainController'>
+	<div id='main' ng-class='result'>
+		{{ message }}
+		<div ng-view></div>
+
+	</div> 
+
+</body>	
+</html>

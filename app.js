@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 
 //ROUTES!!!!!!!!!!!
+//api
 app.get("/", index.home);
 
 app.get("/pages", pages.getPages);
@@ -33,6 +34,10 @@ app.get("/pages/:topic", pages.dispTopic);
 app.post("/editTopic", edit.editTopic);
 
 app.post("/addTopic", add.addTopic);
+
+/*app.get('*', function(req, res) {
+    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});*/
 
 mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
 var PORT = 3000;
