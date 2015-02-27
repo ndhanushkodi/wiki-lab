@@ -28,8 +28,8 @@ routes.addTopic = function(req,res){
 			res.status(500).send("Couldn't add topic");
 		}
 		console.log(newTopic);
-		res.json(newTopic);
-		//res.send(newTopic);
+		//res.json(newTopic);
+		res.send(newTopic);
 	});
 }
 

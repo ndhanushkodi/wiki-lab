@@ -22,7 +22,19 @@ routes.getPages = function(req, res) {
 };
 
 routes.dispTopic = function(req,res){
-	//
+
+	var topic = req.params.topic;
+	
+	//Finds topic by the request
+	Topic.findOne({name:topic}).exec(function(err,topicPage){
+		if(err){
+			console.error("Can't find this topic");
+			res.status(500).send("Couldn't find this topic");
+		}
+		//Send topic to be rendered
+		var topicInfo = topicPage;
+		res.send(topicInfo);
+	});
 }
 
 module.exports = routes;
