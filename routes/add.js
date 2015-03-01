@@ -9,12 +9,14 @@ var Topic = models.Topic;
 
 routes.addTopic = function(req,res){
 	//var name = req.body.name;
-	var name = 'Pirates';
-	var img = 'url/ugly.png';
-	var description = 'Dress up and stuff';
+
+	console.log("Got to addTopic!");
+
+	var name = req.body.name;
+	var img = req.body.img;
+	var description = req.body.description;
 	var dateAdded = new Date();
-	dateAdded = dateAdded.getDate();
-	var rules = 'do this do that'
+	var rules = req.body.rules;
 
 	var newTopic = new Topic({name:name, 
 		img:img, 
