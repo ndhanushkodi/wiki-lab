@@ -25,15 +25,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //ROUTES!!!!!!!!!!!
 //api
-app.get("/", index.home);
+app.get("/api/", index.home);
 
-app.get("/pages", pages.getPages);
+app.get("/api/pages", pages.getPages);
 
-app.get("/pages/:topic", pages.dispTopic);
+app.get("/api/pages/:topic", pages.dispTopic);
 
-app.post("/editTopic", edit.editTopic);
+app.post("/api/editTopic", edit.editTopic);
 
-app.post("/addTopic", add.addTopic);
+app.post("/api/addTopic", add.addTopic);
 
 /*app.get('*', function(req, res) {
     res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
