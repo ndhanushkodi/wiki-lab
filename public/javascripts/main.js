@@ -69,10 +69,10 @@ wikiParty.controller('addController', function($scope, $http) {
 });
 
 wikiParty.controller('byTopicController', function($scope, $http, $routeParams) {
-	var topicName = $routeParams.topic;
-	console.log(topicName);
+	var topicId = $routeParams.topic;
+	console.log(topicId);
 
-	$http.get('/api/pages/' + topicName)
+	$http.get('/api/pages/' + topicId)
 		.success(function(data){
 			console.log("Successfully found topic!");
 			$scope.topic = data;
@@ -99,7 +99,7 @@ wikiParty.controller('searchController', function($scope, $http) {
 					// Redirect to the proper page
 					console.log("That topic doesn't exist yet!");
 				} else {
-					console.log("Search result: " + data);
+					console.log("Search result: " + data[0].name);
 					//Then provide a link to the page(s)
 				};			
 			})

@@ -23,10 +23,11 @@ routes.getPages = function(req, res) {
 
 routes.dispTopic = function(req,res){
 
-	var topic = req.params.topic;
+	var topicId = req.params.topic;
+	console.log(topicId);
 	
 	//Finds topic by the request
-	Topic.findOne({name:topic}).exec(function(err,topicPage){
+	Topic.findOne({_id:topicId}).exec(function(err,topicPage){
 		if(err){
 			console.error("Can't find this topic");
 			res.status(500).send("Couldn't find this topic");
