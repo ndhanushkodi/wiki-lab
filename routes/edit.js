@@ -10,13 +10,16 @@ var Topic = models.Topic;
 routes.editTopic = function(req, res) {
 // Find an existing page and make edit based on user input
 
-	// these values are for testing only
-	// TODO: update these to req.body once post requests working
-	var topicName = 'test';
-	var newDescription = 'Dummy Description';
+	// Get values from the user post
+	var topicName = req.body.name;
+	var newDescription = req.body.description;
+	var newImg = req.body.img;
+	var newRules = req.body.rules;
 
 	//Finds the topic by id and updates the description
-	Topic.findOneAndUpdate({ name: topicName}, {description: newDescription}, function (err, editedTopic){
+
+	//TODO: only update the ones the user actually changed
+	Topic.findOneAndUpdate({ name: topicName}, {description: newDescription}, {img: newImg}, {rules: newRules}, function (err, editedTopic){
 		if (err) {
 			console.error("Couldn't find and update the topic ", err);
 			res.status(500).send("Couldn't find and update the topic!");

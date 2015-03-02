@@ -1,3 +1,7 @@
-<div ng-controller='mainController'>
-<p>This is the home page</p>
+<div>
+	<p>Search our wiki for a topic!</p>
+	<form>
+		<input type = "text" placeholder = "Search for a page here..." ng-model = searchData.query>
+		<button type = "submit" ng-click = "searchPage()">Go!</button>
+	</form>
 </div>
