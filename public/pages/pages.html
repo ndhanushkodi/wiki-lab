@@ -1,5 +1,11 @@
-<p>this is pages</p>
-<div>{{msg}}</div>
+<!-- <p>this is pages</p>
+<div>{{msg}}</div> -->
 <div ng-repeat="page in pages">
-	<div>{{page.name}}</div>
+	<div class="col-sm-4">
+          <div class="list-group">
+            <a href="#pages/{{page._id}}" class="list-group-item active">
+            	{{page.name}}
+            </a>
+          </div>
+        </div><!-- /.col-sm-4 -->
 </div>
