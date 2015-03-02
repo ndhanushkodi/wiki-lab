@@ -22,8 +22,11 @@ wikiParty.config(function($routeProvider) {
         .when('/pages/:topic', {
         	templateUrl : '../pages/topic.html',
         	controller : 'byTopicController'
+        })
+        .when('/edit/:topic', {
+        	templateUrl : '../pages/edit.html',
+        	controller : 'editController'
         });
-
 });
 
 /*wikiParty.controller('mainController', function($scope, $http){
@@ -107,6 +110,24 @@ wikiParty.controller('searchController', function($scope, $http) {
 			console.log("Error: " + data);
 		});
 	};
+});
+
+wikiParty.controller('editController', function($scope, $http, $routeParams) {
+	console.log("Edit controller");
+
+	$scope.editData = {};
+
+	var editId = $routeParams.topic;
+	$scope.editPage = function () {
+		$http.post('/api/edit/' + editId, $scope.editData)
+			.success( function(data) {
+				$scope.editData = {};
+			})
+			.error(function(data) {
+				console.log("Error: " + data);
+		});
+	};
+
 });
 
 

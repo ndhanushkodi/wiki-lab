@@ -31,7 +31,7 @@ app.get("/api/pages", pages.getPages);
 
 app.get("/api/pages/:topic", pages.dispTopic);
 
-app.post("/api/editTopic", edit.editTopic);
+app.post("/api/edit/:topic", edit.editTopic);
 
 app.post("/api/addTopic", add.addTopic);
 
