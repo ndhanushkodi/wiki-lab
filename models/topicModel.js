@@ -1,4 +1,5 @@
-/* The db schema for a topic in our wiki
+/* 
+	The db schema for a topic in our wiki
 	img is a string of a url so the picture
 	is not a file upload because we don't want to store
 	all that in our db

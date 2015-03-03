@@ -1,4 +1,6 @@
-/* Allows user to edit an existing page in the wiki */
+/* 
+	Allows user to edit an existing page in the wiki
+*/
 
 var mongoose = require('mongoose');
 var models = require('../models/topicModel');
@@ -19,9 +21,14 @@ routes.editTopic = function(req, res) {
 	// Get the id of the thing to edit from the url
 	var editId = req.params.topic;
 
-	//Finds the topic by id and updates the description, rules, img, etc.
+	// Finds the topic by id and updates the description, rules, img, etc.
 	var query = {_id : editId};
+
+	// This object will contain the updates to make
 	var update = {};
+
+	// Add things to the update object only if data is present
+	// This prevents error if the user doesn't update all field
 	if (newDescription) {
 		update.description = newDescription;
 	};
@@ -31,8 +38,8 @@ routes.editTopic = function(req, res) {
 	if (newRules ) {
 		update.rules = newRules;
 	};
-	console.log(update);
 
+	// Find a topic by id and update 
 	Topic.findOneAndUpdate(query, update, function (err, editedTopic){
 		if (err) {
 			console.error("Couldn't find and update the topic ", err);

@@ -1,9 +1,9 @@
-//this is what ng-app will be
-var wikiParty = angular.module('wikiParty', ['ngRoute']);
+/* 
+	The route configurations and the controllers for the party wiki
+*/
 
-var errorHandler = function (data) {
-	console.log('Error: ' + data);
-};
+
+var wikiParty = angular.module('wikiParty', ['ngRoute']);
 
 wikiParty.config(function($routeProvider) {
     $routeProvider
@@ -30,18 +30,8 @@ wikiParty.config(function($routeProvider) {
 
 });
 
-/*wikiParty.controller('mainController', function($scope, $http){
-	//$scope.message = 'main controller';
-	$http.get('/api/')
-		.success(function(data){
-			$scope.pages = data;
-			console.log(data);
-		})
-		.error(errorHandler(data));
-});*/
-
 wikiParty.controller('pagesController', function($scope, $http) {
-	//$scope.msg = "pages controller";
+	// Get all of the pages in the database
 	$http.get('/api/pages')
 		.success(function(data){
 			$scope.pages = data;
@@ -56,7 +46,9 @@ wikiParty.controller('pagesController', function($scope, $http) {
 
 wikiParty.controller('addController', function($scope, $http) {
 	$scope.formData = {};
+	$scope.msg = "";
 
+	// Submit new page 
 	$scope.addPage = function () {
 		$http.post('/api/addTopic', $scope.formData)
 			.success(function(data){
@@ -68,17 +60,20 @@ wikiParty.controller('addController', function($scope, $http) {
 		});
 	};
 
+	// Hide the confirmation message when the user clicks on the form again
+	$scope.hideMsg = function() {
+		$scope.msg = "";
+	};
+
 });
 
 wikiParty.controller('byTopicController', function($scope, $http, $routeParams) {
+	// Get the page id from the url
 	var topicId = $routeParams.topic;
-	console.log(topicId);
 
-
-
+	// Get the requested page by topic id
 	$http.get('/api/pages/' + topicId)
 		.success(function(data){
-			console.log("Successfully found topic!");
 			$scope.topic = data;
 		})
 		.error(function(data) {
@@ -92,18 +87,12 @@ wikiParty.controller('searchController', function($scope, $http, $window) {
 	$scope.alertMessage = "";
 
 	$scope.searchPage = function () {
-		//Check if thing already exists in the wiki
-		//Render the page if it does exist
-		console.log("search page function!");
-
-		console.log($scope.searchData.query);
-
+		// Search by name
 		$http.post('/api/search', $scope.searchData)
 			.success(function(data) {
 				$scope.searchData = {};
 				if (!data[0]) {
-					// Redirect to the proper page
-					console.log("That topic doesn't exist yet!");
+					// Alert the user if the theme they searched for doesn't yet exist
 					$scope.alertMessage = "That party theme does not yet exist in our database!";
 
 				} else {
@@ -113,20 +102,19 @@ wikiParty.controller('searchController', function($scope, $http, $window) {
 				};			
 			})
 			.error(function(data) {
-			console.log("Error: " + data);
+				console.log("Error: " + data);
 		});
 	};
 });
 
 wikiParty.controller('editController', function($scope, $http, $routeParams, $window) {
-	console.log("Edit controller");
-
 	$scope.editData = {};
 
+	// Get the topic id from the url
 	var editId = $routeParams.topic;
+	
 	$scope.editPage = function () {
-		console.log($scope.editData);
-		console.log(editId);
+		// Post edits to the page with the corresponding id 
 		$http.post('/api/edit/' + editId, $scope.editData)
 			.success( function(data) {
 				$scope.editData = {};

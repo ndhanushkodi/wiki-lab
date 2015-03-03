@@ -1,4 +1,6 @@
-/* Lists all current pages in the db */
+/* 
+	Lists all current pages in the db 
+*/
 
 var mongoose = require('mongoose');
 var models = require('../models/topicModel');
@@ -22,11 +24,10 @@ routes.getPages = function(req, res) {
 };
 
 routes.dispTopic = function(req,res){
-
+	// Get the topic id from the url
 	var topicId = req.params.topic;
-	console.log(topicId);
 	
-	//Finds topic by the request
+	// Finds topic by the id
 	Topic.findOne({_id:topicId}).exec(function(err,topicPage){
 		if(err){
 			console.error("Can't find this topic");

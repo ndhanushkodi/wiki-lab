@@ -14,7 +14,8 @@ var pages = require("./routes/pages");
 
 
 var app = express();
-//Middleware use
+
+//Middleware
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 app.use(logger("dev"));
@@ -24,10 +25,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-//API routes that Angular can $http.get or $http.post to get the 
-//right data and do whatever it needs to. 
-app.get("/api/", index.home);
-
+//API routes that angular will use to get and post data 
 app.get("/api/pages", pages.getPages);
 
 app.get("/api/pages/:topic", pages.dispTopic);
@@ -38,9 +36,6 @@ app.post("/api/addTopic", add.addTopic);
 
 app.post("/api/search", index.search);
 
-/*app.get('*', function(req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-});*/
 
 mongoose.connect(process.env.MONGOURI || 'mongodb://localhost/test');
 var PORT = 3000;
