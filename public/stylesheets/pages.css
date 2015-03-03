@@ -1,0 +1,8 @@
+.pages {
+	position:absolute;
+	top:10rem;
+	width:100%;
+}
+.pages .col-sm-4{
+	color: hsla(120, 100%, 75%, 0.3) !important;
+}
