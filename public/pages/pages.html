@@ -10,12 +10,18 @@
 		<br>
 		<div ng-repeat="page in pages">
 			<div class="col-sm-12 page-name">
-		            <a href="#pages/{{page._id}}">
+		            <div class = "col-md-6"><a href="#pages/{{page._id}}">
 		            	{{$index + 1}}. {{page.name}}
-		            </a>
+		            </a></div>
+		            <div class = "col-md-6 dateUpdated"><p>Last Updated: {{ page.dateAdded | date : "h:mm a MMM d yyyy"}}</p></div>
 		          </div>
 		    </div><!-- /.col-sm-4 -->
 		</div>
 	</div>
 
 </div>
+
+<script>
+	var d = {{page.dateAdded}};
+	document.getElementById("date").innerHTML = d.toDateString();
+</script>

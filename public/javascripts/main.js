@@ -74,6 +74,8 @@ wikiParty.controller('byTopicController', function($scope, $http, $routeParams) 
 	var topicId = $routeParams.topic;
 	console.log(topicId);
 
+
+
 	$http.get('/api/pages/' + topicId)
 		.success(function(data){
 			console.log("Successfully found topic!");
