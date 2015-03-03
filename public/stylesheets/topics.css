@@ -3,16 +3,27 @@
 	padding-top:3rem;
 	margin: 5rem;
 	/*top:10rem;*/
+
 }
 .topic h1{
 	text-align: left;
+	display:inline-block;
+	padding-right: 40rem;
 }
-.topic p{
+.topic h3{
 	text-align: left;
+	padding-right: 45rem;
+}
+.topic h4{
+	margin-top:2rem;
+	text-align: left;
+	padding-right: 40rem;
 }
 
 .topic img{
-	max-width:30rem;
-	max-height:30rem;
+	max-width:40rem;
+	max-height:40rem;
 	border-radius: 1rem;
+	display:inline-block;
+	float: right;
 }
