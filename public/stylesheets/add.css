@@ -1,0 +1,9 @@
+.add{
+	/*position: absolute;*/
+	padding-top:4rem;
+	margin: 5rem;
+	/*top:10rem;*/
+}
+.add #description{
+	height:5rem;
+}
