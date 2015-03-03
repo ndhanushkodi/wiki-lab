@@ -125,8 +125,6 @@ wikiParty.controller('editController', function($scope, $http, $routeParams) {
 
 	var editId = $routeParams.topic;
 	$scope.editPage = function () {
-		console.log($scope.editData);
-		console.log(editId);
 		$http.post('/api/edit/' + editId, $scope.editData)
 			.success( function(data) {
 				$scope.editData = {};

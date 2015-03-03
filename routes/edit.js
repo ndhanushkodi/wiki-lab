@@ -20,9 +20,19 @@ routes.editTopic = function(req, res) {
 	var editId = req.params.topic;
 
 	//Finds the topic by id and updates the description, rules, img, etc.
-	//TODO: only update the ones the user actually changed
 	var query = {_id : editId};
-	var update = {description: newDescription, img: newImg, rules: newRules};
+	var update = {};
+	if (newDescription) {
+		update.description = newDescription;
+	};
+	if (newImg) {
+		update.img = newImg;
+	};
+	if (newRules ) {
+		update.rules = newRules;
+	};
+	console.log(update);
+
 	Topic.findOneAndUpdate(query, update, function (err, editedTopic){
 		if (err) {
 			console.error("Couldn't find and update the topic ", err);
