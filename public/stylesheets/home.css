@@ -45,16 +45,20 @@
 }
 
 .home h1 {
-	font-size: 2.5rem;
+	font-size: 3rem;
 }
 
-@media only screen and (min-width: 50em) {
+.home a:hover {
+	text-decoration: none;
+}
+
+@media only screen and (min-width: 63em) {
 	.home .background-img img{
 	width: 100%;
 	}	
 
 	.home h1 {
-		font-size: 4.5rem;
+		font-size: 4.75rem;
 	}
 
 	.home .main-blurb {

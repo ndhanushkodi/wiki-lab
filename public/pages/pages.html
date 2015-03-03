@@ -9,14 +9,13 @@
 		<h1>All Party Themes</h1>
 		<br>
 		<div ng-repeat="page in pages">
-			<div class="col-sm-12">
-		          <div class="list-group">
-		            <a href="#pages/{{page._id}}" class="list-group-item active">
-		            	{{page.name}}
+			<div class="col-sm-12 page-name">
+		            <a href="#pages/{{page._id}}">
+		            	{{$index + 1}}. {{page.name}}
 		            </a>
 		          </div>
 		    </div><!-- /.col-sm-4 -->
 		</div>
 	</div>
-<!-- <a href="#add/"><button>Add a Page</button></a> -->
+
 </div>

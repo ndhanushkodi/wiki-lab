@@ -1,5 +1,6 @@
 <div class = 'add'>
-<h1>Add a page here!</h1>
+<h1>Add a Party Theme!</h1>
+<p>Please provide a working link for the image field</p>
 <form>
 	<input type = "text" placeholder = "Name" ng-model = formData.name>
 	<input id='description' type = "text" placeholder = "Description" ng-model = formData.description>
@@ -7,4 +8,6 @@
 	<input type = "text" placeholder = "Rules" ng-model = formData.rules>
 	<button type = "submit" ng-click = "addPage()">Add!</button>
 </form>
+<div>{{msg}}</div>
+
 </div>

@@ -57,13 +57,11 @@ wikiParty.controller('pagesController', function($scope, $http) {
 wikiParty.controller('addController', function($scope, $http) {
 	$scope.formData = {};
 
-	//$scope.msg = "add controller";
-
 	$scope.addPage = function () {
 		$http.post('/api/addTopic', $scope.formData)
 			.success(function(data){
 				$scope.formData = {};
-				console.log("Successfully posted new page!");
+				$scope.msg = "Congratulations! You have successfully added your party theme!";
 			})
 			.error(function(data) {
 			console.log("Error: " + data);
@@ -118,7 +116,7 @@ wikiParty.controller('searchController', function($scope, $http, $window) {
 	};
 });
 
-wikiParty.controller('editController', function($scope, $http, $routeParams) {
+wikiParty.controller('editController', function($scope, $http, $routeParams, $window) {
 	console.log("Edit controller");
 
 	$scope.editData = {};
@@ -130,6 +128,7 @@ wikiParty.controller('editController', function($scope, $http, $routeParams) {
 		$http.post('/api/edit/' + editId, $scope.editData)
 			.success( function(data) {
 				$scope.editData = {};
+				$window.location.href= "#pages/" + editId;
 			})
 			.error(function(data) {
 				console.log("Error: " + data);
