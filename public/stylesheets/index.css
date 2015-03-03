@@ -15,3 +15,7 @@ h6,
     font-family: "Muli", Helvetica, sans-serif !important;
     opacity: 0.99;
 }
+
+body {
+	display: none;
+}
