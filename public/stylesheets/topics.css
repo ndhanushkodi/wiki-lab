@@ -1,4 +1,18 @@
+.topic{
+	/*position: absolute;*/
+	padding-top:3rem;
+	margin: 5rem;
+	/*top:10rem;*/
+}
+.topic h1{
+	text-align: left;
+}
 .topic p{
-	/*position:absolute;*/
-	top:10rem;
+	text-align: left;
+}
+
+.topic img{
+	max-width:30rem;
+	max-height:30rem;
+	border-radius: 1rem;
 }
