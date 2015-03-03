@@ -1,9 +1,18 @@
 <div class = "home">
-	<p>Search our wiki for a topic!</p>
-	<form>
-		<input type = "text" placeholder = "Search for a page here..." ng-model = searchData.query>
-		<button type = "submit" ng-click = "searchPage()">Go!</button>
-		<a href="#pages/"><button>View Pages</button></a>
-		<a href="#add/"><button>Add a Page</button></a>
-	</form>
+	<div class = "background-img">
+		<img src="images/party-background.jpg">
+	</div>
+	<div class = "container"></div>
+	<div class = "main-blurb">
+		<h4>Your source for party themes, costume ideas, party games, and more!</h4>
+		<br>
+		<h1><strong>What's your party's theme?</strong></h1>
+		<br>
+		<form>
+			<input type = "text" placeholder = "Search by theme..." ng-model = searchData.query class = "search-field">
+			<button type = "submit" ng-click = "searchPage()" class = "btn-lg"><span class = "glyphicon glyphicon-search search-btn"></span></button>
+		</form>
+		<br>
+		<h4> Or view all themes <a href="#pages/">here</a></h4>
+	</div>
 </div>
