@@ -5,24 +5,30 @@ var errorHandler = function (data) {
 	console.log('Error: ' + data);
 };
 
+
 wikiParty.config(function($routeProvider) {
     $routeProvider
+    	//home route renders the home page and has search functionality
         .when('/', {
             templateUrl : '../pages/home.html',
             controller  : 'searchController'
         })
+        //displays the pages, sets up route for that
         .when('/pages', {
         	templateUrl : '../pages/pages.html',
         	controller : 'pagesController'
         })
+        //route to add page
         .when('/add', {
         	templateUrl : '../pages/add.html',
         	controller : 'addController'
         })
+        //route to view specific topic
         .when('/pages/:topic', {
         	templateUrl : '../pages/topic.html',
         	controller : 'byTopicController'
         })
+        //route to edit particular topic
         .when('/edit/:topic', {
         	templateUrl : '../pages/edit.html',
         	controller : 'editController'
@@ -39,6 +45,9 @@ wikiParty.config(function($routeProvider) {
 		.error(errorHandler(data));
 });*/
 
+
+//$scope.pages has all the data for all existing pages. This controller
+//gets all those pages from the api/pages.
 wikiParty.controller('pagesController', function($scope, $http) {
 	//$scope.msg = "pages controller";
 	$http.get('/api/pages')
@@ -53,6 +62,9 @@ wikiParty.controller('pagesController', function($scope, $http) {
 	
 });
 
+
+//$scope.formData has the add form data and sends a post request
+//to api/addTopic so that the topic can get added to the database.
 wikiParty.controller('addController', function($scope, $http) {
 	$scope.formData = {};
 
@@ -71,6 +83,9 @@ wikiParty.controller('addController', function($scope, $http) {
 
 });
 
+
+//get the routeParams so we can send a get request to api/pages/:topicId
+//and get the right data to be displayed in the topic page
 wikiParty.controller('byTopicController', function($scope, $http, $routeParams) {
 	var topicId = $routeParams.topic;
 	console.log(topicId);
@@ -85,6 +100,9 @@ wikiParty.controller('byTopicController', function($scope, $http, $routeParams) 
 		});
 });
 
+
+//searches for a topic page and gets the data to display. 
+//if not, display a message
 wikiParty.controller('searchController', function($scope, $http) {
 	$scope.searchData = {};
 
@@ -112,6 +130,9 @@ wikiParty.controller('searchController', function($scope, $http) {
 	};
 });
 
+
+//allows user to edit in edit form and sends a post request with 
+//the data to edit
 wikiParty.controller('editController', function($scope, $http, $routeParams) {
 	console.log("Edit controller");
 

@@ -27,3 +27,7 @@
 	display:inline-block;
 	float: right;
 }
+
+.topic button{
+	border-radius: .5rem;
+}

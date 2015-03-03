@@ -1,4 +1,4 @@
-//var path = require('path');
+/* Allows user to add a new page to the wiki*/
 
 var mongoose = require('mongoose');
 var models = require('../models/topicModel');
@@ -7,9 +7,9 @@ var routes = {};
 
 var Topic = models.Topic;
 
+/*form data comes in the req.body and this function 
+saves the new wiki data to the database*/
 routes.addTopic = function(req,res){
-	//var name = req.body.name;
-
 	console.log("Got to addTopic!");
 
 	var name = req.body.name;
@@ -23,7 +23,7 @@ routes.addTopic = function(req,res){
 		description:description,
 		dateAdded:dateAdded,
 		rules:rules});
-
+	//save added topic to database
 	newTopic.save(function(err){
 		if(err){
 			console.error('Cant add topic');

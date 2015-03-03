@@ -1,3 +1,4 @@
+//REQUIRES
 var express = require("express");
 var path = require("path");
 var logger = require("morgan");
@@ -13,7 +14,7 @@ var pages = require("./routes/pages");
 
 
 var app = express();
-
+//Middleware use
 app.engine("handlebars", exphbs({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 app.use(logger("dev"));
@@ -23,8 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 
-//ROUTES!!!!!!!!!!!
-//api
+//API routes that Angular can $http.get or $http.post to get the 
+//right data and do whatever it needs to. 
 app.get("/api/", index.home);
 
 app.get("/api/pages", pages.getPages);
